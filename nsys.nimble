@@ -41,7 +41,7 @@ proc runFile (file :string) :void=  file.runFile( "", "" )
   ## Runs file using the nimcr command
 proc runTest (file :string) :void=  file.runFile(testsDir, "")
   ## Runs the given test file. Assumes the file is stored in the default testsDir folder
-proc runExample (file :string) :void=  file.runFile(examplesDir)
+proc runExample (file :string) :void=  file.runFile(examplesDir, "")
   ## Runs the given test file. Assumes the file is stored in the default testsDir folder
 template example (name :untyped; descr,file :static string)=
   ## Generates a task to build+run the given example
