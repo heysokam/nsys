@@ -7,7 +7,6 @@ Populates the input callbacks with some sane defaults when they are omitted.
 Most things are done with glfw, instead of manually through the system APIs.  
 This library avoids having to create duplicates for `window.nim` and `input.nim` in every renderer API module with the exact same functionality.  
 
-**Compile-time configuration switches**:
 ## How to
 Simple API
 ```nim
@@ -23,6 +22,7 @@ sys.term()                    # Terminate the data when we are done
 # See the nsys.nim file for other versions of the `init()` constructor, and all their possible inputs.
 ```
 
+**Compile-time configuration switches**:
 ```md
 # API support
 Supports wgpu-native and Vulkan by default.  (Opens a window with glfw.NoAPI)
