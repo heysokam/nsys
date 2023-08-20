@@ -6,7 +6,7 @@ import std/[ os,strformat ]
 #_____________________________
 # Package
 packageName   = "nsys"
-version       = "0.0.0"
+version       = "0.1.0"
 author        = "sOkam"
 description   = "n*sys | System-specific Interaction tools"
 license       = "MIT"
@@ -14,6 +14,10 @@ license       = "MIT"
 #_____________________________
 # Build Requirements
 requires "nim >= 2.0.0"
+# n*dk Requirements
+requires "https://github.com/heysokam/nstd#head"
+requires "https://github.com/heysokam/nmath#head"
+requires "https://github.com/heysokam/nglfw#head"
 
 #_____________________________
 # Folders
