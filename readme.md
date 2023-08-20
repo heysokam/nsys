@@ -29,10 +29,10 @@ Supports wgpu-native and Vulkan by default.  (Opens a window with glfw.NoAPI)
 - [ ] TODO:  OpenGL support
 
 # Formatting
--d:glfwPrefix:newPrefix      default -> "n*GLFW"
--d:glfwWindowTitle:newTitle  default -> glfwPrefix&" | Window"
--d:nsysPrefix:newPrefix      default -> "「nsys」"
--d:nsysWindowTitle:newTitle  default -> nsysPrefix&" | Window"
+-d:glfwPrefix:newPrefix      : default -> "n*GLFW"
+-d:glfwWindowTitle:newTitle  : default -> glfwPrefix&" | Window"
+-d:nsysPrefix:newPrefix      : default -> "「nsys」"
+-d:nsysWindowTitle:newTitle  : default -> nsysPrefix&" | Window"
 
 # Backend
 _Note: These are currently not useful. Stored here for documentation completeness._
