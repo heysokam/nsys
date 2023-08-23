@@ -18,7 +18,7 @@ while not sys.close():        # While the system.window has not been marked for 
   sys.update()                # Update the window and input
 sys.term()                    # Terminate the data when we are done
 
-# The nsys.init() function can be called with just a size, due to all arguments having sane defaults.
+# The nsys.init() function can be called without any inputs. All arguments have sane defaults.
 # See the nsys.nim file for other versions of the `init()` constructor, and all their possible inputs.
 ```
 
@@ -34,8 +34,14 @@ Supports wgpu-native and Vulkan by default.  (Opens a window with glfw.NoAPI)
 -d:nsysPrefix:newPrefix      : default -> "「nsys」"
 -d:nsysWindowTitle:newTitle  : default -> nsysPrefix&" | Window"
 
+# Other Config
+-d:nsysWindowWidth:N       : default -> 960
+-d:nsysWindowHeight:N      : default -> 540
+-d:nsysWindowResize:on/off : default -> off
+-d:nsysMouseCapture:on/off : default -> off
+
 # Backend
 _Note: These are currently not useful. Stored here for documentation completeness._
 -d:nsysGLFW   : (default) Marks the library for working with GLFW. Overrides `nsysNative`
--d:nsysNative : Marks the library for working with the native system (not implemented)
+-d:nsysNative : (not implemented) Marks the library for working with the native system
 ```

@@ -11,7 +11,7 @@ import nmath
 # n*sys dependencies
 import ../cfg
 import ./types
-from   ./input as i import nil
+import ./callbacks as cb
 
 
 #_______________________________________
@@ -25,32 +25,14 @@ func getSize *(w :var Window) :UVec2=
 
 
 #_______________________________________
-# Default Callbacks
-#__________________
-proc error *(code :int32; desc :cstring) :void {.cdecl, discardable.} =
-  ## GLFW error callback. Just echoes messages to the terminal.
-  ## Implement your own function and send it as an argument to the constructor if you want different behavior.
-  echo cfg.glfwPrefix, &": [Error]:{$code}\n  {$desc}"
-#__________________
-proc resize *(window :glfw.Window; W,H :cint) :void {.cdecl.}= discard
-  ## Dummy GLFW FrameBufferSize callback. Does nothing.
-  ## Only for reference. Behavior on window resize is extremely application dependent.
-
-
-#_______________________________________
-# General
+# Constructors
 #__________________
 proc new *(_:typedesc[Window]; 
-    res          : UVec2;
+    res          : UVec2                   = uvec2(cfg.nsysWindowWidth, cfg.nsysWindowHeight);
     title        : str                     = cfg.glfwWindowTitle;
-    resizable    : bool                    = false;
-    resize       : glfw.FrameBufferSizeFun = resize;
-    key          : glfw.KeyFun             = i.key;
-    mousePos     : glfw.CursorPosFun       = i.mousePos;
-    mouseBtn     : glfw.MouseButtonFun     = i.mouseBtn;
-    mouseScroll  : glfw.ScrollFun          = i.mouseScroll;
-    mouseCapture : bool                    = true;
-    error        : glfw.ErrorFun           = error;
+    resizable    : bool                    = cfg.nsysWindowResize;
+    resize       : glfw.FrameBufferSizeFun = cb.resize;
+    error        : glfw.ErrorFun           = cb.error;
   ) :Window=
   ## Initializes and returns a new window with GLFW.
   discard glfw.setErrorCallback(error)
@@ -61,16 +43,27 @@ proc new *(_:typedesc[Window];
   result.title = title
   result.ct    = glfw.createWindow(res.x.int32, res.y.int32, title.cstring, nil, nil)
   doAssert result.ct != nil, "Failed to create GLFW window"
-  discard glfw.setKeyCallback(result.ct, key)
-  discard glfw.setCursorPosCallback(result.ct, mousePos)
-  discard glfw.setMouseButtonCallback(result.ct, mouseBtn)
-  discard glfw.setScrollCallback(result.ct, mouseScroll)
   discard glfw.setFramebufferSizeCallback(result.ct, resize)  # Set viewport size/resize callback
-  if mouseCapture: glfw.setInputMode(result.ct, glfw.Cursor, glfw.CursorDisabled)
-
+#__________________
+proc new *(_:typedesc[Window];
+    W            : Natural                 = cfg.nsysWindowWidth;
+    H            : Natural                 = cfg.nsysWindowHeight;
+    title        : str                     = cfg.nsysWindowTitle;
+    resizable    : bool                    = cfg.nsysWindowResize;
+    resize       : glfw.FrameBufferSizeFun = cb.resize;
+    error        : glfw.ErrorFun           = cb.error;
+  ) :Window=
+  ## Initializes the window with GLFW.
+  result = Window.new(
+    res          = uvec2(W,H),
+    title        = title,
+    resizable    = resizable,
+    resize       = resize,
+    error        = error,
+    ) # << Window.new( ... )
 #__________________
 template init *(win :var Window;
-    res          : UVec2;
+    res          : UVec2                   = uvec2(cfg.nsysWindowWidth, cfg.nsysWindowHeight);
     title        : str                     = cfg.glfwWindowTitle;
     resizable    : bool                    = true;
     resize       : glfw.FrameBufferSizeFun = nil;

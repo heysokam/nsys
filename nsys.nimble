@@ -6,7 +6,7 @@ import std/[ os,strformat ]
 #_____________________________
 # Package
 packageName   = "nsys"
-version       = "0.1.1"
+version       = "0.2.0"
 author        = "sOkam"
 description   = "n*sys | System-specific Interaction tools"
 license       = "MIT"
