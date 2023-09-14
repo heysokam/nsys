@@ -13,7 +13,7 @@ when backend.GLFW:
   import ./nsys/glfw/window ; export window
   import ./nsys/glfw/input  ; export input
   import ./nsys/glfw/types  ; export types
-  import ./nsys/glfw/callbacks as cb
+  import ./nsys/glfw/callbacks as cb ; export cb
 else: # Native dependencies
   {.error: "n*sys -> Native support is currently not implemented.".}
 # Backend-agnostic import/exports
