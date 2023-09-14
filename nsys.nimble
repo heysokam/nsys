@@ -15,7 +15,6 @@ license       = "MIT"
 # Build Requirements
 requires "nim >= 2.0.0"
 # n*dk Requirements
-requires "https://github.com/heysokam/nstd#head"
 requires "https://github.com/heysokam/nmath#head"
 requires "https://github.com/heysokam/nglfw#head"
 
@@ -27,6 +26,7 @@ installExt      = @["nim"]
 let docDir      = "doc"
 let testsDir    = "tests"
 let examplesDir = "examples"
+skipFiles       = @["nim.cfg"]
 
 #_____________________________
 # Binaries
