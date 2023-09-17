@@ -23,7 +23,7 @@ import ./nsys/cfg   ; export cfg
 
 #_____________________________
 # Backend-agnostic types
-type System * = object
+type System * = ref object
   win  *:Window
   inp  *:Input
 
@@ -45,6 +45,7 @@ when backend.GLFW:
       mouseCapture : bool                    = cfg.nsysMouseCapture;
       error        : glfw.ErrorFun           = cb.error;
     ) :System=
+    new result
     result.win = Window.new(
       res          = res,
       title        = title,
