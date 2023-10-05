@@ -98,14 +98,3 @@ when backend.GLFW:
 else: # Native dependencies
   {.error: "n*sys -> Native support is currently not implemented.".}
 
-
-
-#_______________________________________
-# Debug : Entry Point example
-when isMainModule:
-  # import ./nsys
-  echo nsysPrefix&"Hello Window with Input!"
-  var sys = nsys.init(960,540)
-  while not sys.close(): sys.update()
-  sys.term()
-
