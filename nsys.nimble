@@ -6,7 +6,7 @@ import std/[ os,strformat ]
 #_____________________________
 # Package
 packageName   = "nsys"
-version       = "0.2.3"
+version       = "0.2.4"
 author        = "sOkam"
 description   = "n*sys | System-specific Interaction tools"
 license       = "MIT"
@@ -28,10 +28,6 @@ let testsDir    = "tests"
 let examplesDir = "examples"
 skipFiles       = @["nim.cfg"]
 
-#_____________________________
-# Binaries
-backend       = "c"
-bin           = @[packageName]
 
 #________________________________________
 # Helpers
